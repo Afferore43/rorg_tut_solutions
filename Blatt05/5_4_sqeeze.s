@@ -12,7 +12,7 @@ main:
 	li $v0,4 #print string
 	la $a0,string
 	syscall
-	
+
 	li $v0,10 #exit
 	syscall
 
