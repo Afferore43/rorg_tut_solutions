@@ -21,11 +21,12 @@ string:	.asciiz "123hell0 w0rld56"
 	
 # check if character is a digit
 
-# params:
-# a0 = character
 # returns
 # 1 if a0 is a digit, otherwise 0
 is_digit:
+    # params:
+    # a0 = character
+
 	# jump to not_dig if, $a0 smaller than '0'
 	li $t0,'0'
 	bltu $a0,$t0,not_dig # char is unsigned
@@ -46,13 +47,16 @@ not_dig:
 
 # count number of numbers in string
 
-# params:
-# a0 = address of first character of string
+# note: this could possibly be simplified/coded better,
+# but is written as is, to conform to c code example
 
 # returns
 # number of numbers in string
 number_of_numbers:
-	# save registers on stack
+    # params:
+    # a0 = address of first character of (null-terminated) string
+
+    # save registers on stack
 	addi $sp, $sp, -24
 	sw   $ra, 0($sp)
 	sw   $a0, 4($sp)
